@@ -91,10 +91,9 @@ Le cross-filtering est actif : sélectionner une catégorie met à jour tous les
 
 ### Aperçu
 
-<!-- Remplacer par vos captures d'écran dans le dossier images/ -->
-![Page 1](images/dashboard_page1.png)
-![Page 2](images/dashboard_page2.png)
-![Page 3](images/dashboard_page3.png)
+![Page 1 : Vue d'ensemble des ventes](Screenshot%202026-10-24%20213216.png)
+![Page 2 : Analyse produits et clients](Screenshot%202026-10-24%20213241.png)
+![Page 3 : Analyse des remises](Screenshot%202026-10-24%20213259.png)
 
 ## Reporting SSRS
 
@@ -106,7 +105,7 @@ Rapports paginés conçus avec SQL Server Reporting Services à partir de la bas
 - Liste des rapports (nom + objectif de chaque rapport)
 - Datasets / requêtes utilisés
 - Paramètres (filtres) et exports (PDF, Excel)
-- Captures d'écran dans images/ssrs/
+- Captures d'écran des rapports
 -->
 
 ## Difficultés rencontrées et solutions
@@ -126,28 +125,22 @@ Rapports paginés conçus avec SQL Server Reporting Services à partir de la bas
 - La correspondance `user_id` / `user_name` n'a pas pu être validée ; les analyses clients reposent sur l'identifiant.
 - Piste : enrichir le modèle avec une dimension géographique si une source supplémentaire est disponible.
 
-## Structure du dépôt
+## Contenu du dépôt
 
-```
-├── sql/
-│   ├── PROJET_Amazon_BI.sql      # Création de la base, des tables et peuplement
-│   └── SQLQuery3.sql             # Requêtes de vérification
-├── powerbi/
-│   └── power_BI_PFA.pbix         # Tableau de bord Power BI
-├── report/
-│   └── Rapport_Projet_Decisionnel_Amazon_version_finale.pdf
-├── ssrs/                         # Rapports SSRS (.rdl) : à venir
-├── images/                       # Captures d'écran des dashboards
-└── README.md
-```
+- `PROJET_Amazon_BI.sql` : création de la base, des tables et peuplement du modèle en étoile
+- `SQLQuery3.sql` : requêtes de vérification
+- `power BI PFA.pbix` : tableaux de bord Power BI
+- `Rapport_Projet_Decisionnel_Amazon_version_finale.pdf` : rapport complet du projet
+- `Screenshot ... .png` : captures d'écran des tableaux de bord
+- `README.md` : ce fichier
 
 ## Reproduire le projet
 
-1. Créer la base `Amazon_BI` et exécuter `sql/PROJET_Amazon_BI.sql` pour créer les tables.
+1. Créer la base `Amazon_BI` et exécuter `PROJET_Amazon_BI.sql` pour créer les tables.
 2. Télécharger le dataset *Amazon Sales* sur Kaggle (`amazon.csv`).
 3. Créer le package SSIS (Flat File Source → Derived Column → OLE DB Destination) vers `Staging_Amazon`.
 4. Exécuter les requêtes T-SQL de peuplement des dimensions puis de `Fait_Ventes`.
-5. Ouvrir `powerbi/power_BI_PFA.pbix` dans Power BI Desktop et mettre à jour la source de données vers votre serveur SQL local.
+5. Ouvrir `power BI PFA.pbix` dans Power BI Desktop et mettre à jour la source de données vers votre serveur SQL local.
 
 ## Contact
 
